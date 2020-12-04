@@ -2,6 +2,8 @@ package _00_Text_Funkifier;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 public class _00_TestSpecialString {
@@ -38,6 +40,9 @@ public class _00_TestSpecialString {
 	//   the JUnitTest case below to test your customized Special String.
 	@Test
 	public void testCustomString() {
+	NewStringTypes nst = new NewStringTypes("This, too, is a test.");
 	
+	System.out.println(nst.toString());
+	System.out.println(nst.getMap());
 	}
 }
