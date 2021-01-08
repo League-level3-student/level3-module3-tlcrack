@@ -2,25 +2,32 @@ package ChristmasGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class WinterPanel extends JPanel implements KeyListener{
+public class WinterPanel extends JPanel implements KeyListener, ActionListener{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	Avatar avatar = new Avatar();
+	Snowball snowball = new Snowball();
+	Timer snowfallTimer = new Timer(1000, this);
+	ArrayList<Snowball> snowballs = new ArrayList<>();
 	
 	WinterPanel() {
 		if(needImage) {
 		loadImage("WinterBackground.jpg");
 		}
+		snowfallTimer.start();
 		repaint();
-		addKeyListener(this);
 	}
 	
 	void loadImage(String imageFile) {
@@ -44,6 +51,10 @@ public class WinterPanel extends JPanel implements KeyListener{
 		}
 		avatar.draw(g);
 	}
+	
+	void addSnowball() {
+		snowballs.add(new Snowball());
+	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -55,11 +66,20 @@ public class WinterPanel extends JPanel implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		avatar.move(e);
+		repaint();
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==snowfallTimer) {
+			
+		}
 	}
 }

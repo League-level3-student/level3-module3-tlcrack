@@ -16,6 +16,7 @@ public class WinterGUI {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(width,height));
+		frame.addKeyListener(winterPanel);
 		frame.pack();
 	}
 }
